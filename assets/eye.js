@@ -473,6 +473,12 @@
     else wake();
   });
   window.addEventListener("resize", place);
+  window.addEventListener("pageshow", function (event) {
+    if (!event.persisted) return;
+    placed = false;
+    place();
+    if (enabled && media.matches) start();
+  });
 
   trace.style.opacity = "0";
   state.lastMove = performance.now();
