@@ -39,6 +39,7 @@
   var MARGIN = 100;
   var SPRING = 0.16;
   var DAMP = 0.72;
+  var PLACE_EASE = 0.09;
   var NEAR = 90;
   var FAR = 620;
   var BOX = 20;
@@ -135,6 +136,9 @@
 
   var eyeX = 0;
   var eyeY = 0;
+  var targetX = 0;
+  var targetY = 0;
+  var placed = false;
   var state = {
     gx: 0, gy: 0, gtx: 0, gty: 0, vx: 0, vy: 0,
     mx: -1, my: -1, has: false,
@@ -191,9 +195,14 @@
     vh = window.innerHeight;
     var bottomLeft = document.body.classList.contains("page-sport");
     if (bottomLeft) {
-      eyeX = MARGIN;
-      eyeY = vh - H - MARGIN;
+      targetX = MARGIN;
+      targetY = vh - H - MARGIN;
     } else {
+      targetX = vw - W - MARGIN;
+      targetY = MARGIN;
+    }
+    if (!placed) {
+      placed = true;
       eyeX = vw - W - MARGIN;
       eyeY = MARGIN;
     }
@@ -204,11 +213,11 @@
       caption.style.left = MARGIN + "px";
       caption.style.right = "auto";
       caption.style.top = "auto";
-      caption.style.bottom = Math.round(vh - eyeY + 10) + "px";
+      caption.style.bottom = Math.round(vh - targetY + 10) + "px";
     } else {
       caption.style.left = "auto";
       caption.style.right = MARGIN + "px";
-      caption.style.top = Math.round(eyeY + H + 10) + "px";
+      caption.style.top = Math.round(targetY + H + 10) + "px";
       caption.style.bottom = "auto";
     }
   }
@@ -327,6 +336,10 @@
     var now = performance.now();
     var tsec = now / 1000;
     state.scroll = tsec * SCROLL_RATE;
+
+    var placeEase = reduce ? 1 : PLACE_EASE;
+    eyeX += (targetX - eyeX) * placeEase;
+    eyeY += (targetY - eyeY) * placeEase;
 
     if (reduce) {
       state.floatX = 0;
