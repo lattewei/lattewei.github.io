@@ -502,8 +502,8 @@ button {
 }
 
 .page-media {
-  display: grid;
-  gap: 0.75rem;
+  columns: 2;
+  column-gap: 0.9rem;
   margin-top: 1.5rem;
 }
 
@@ -512,9 +512,30 @@ button {
 }
 
 .page-media img {
+  display: block;
   width: 100%;
   height: auto;
+  margin: 0 0 0.9rem;
   border: 1px solid var(--color-border);
+  break-inside: avoid;
+  animation: media-in 0.55s var(--motion-ease-out) both;
+}
+
+@keyframes media-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 30rem) {
+  .page-media {
+    columns: 1;
+  }
 }
 
 .now-album {

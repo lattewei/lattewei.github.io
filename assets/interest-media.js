@@ -19,7 +19,7 @@
       img.onerror = function () {
         remaining -= 1;
       };
-      img.src = "../assets/interests/" + name + "/" + n + "." + ext;
+      img.src = "../assets/interests/" + name + "/image" + n + "." + ext;
     });
   }
 
