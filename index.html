@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>latte</title>
+    <meta
+      name="description"
+      content="Computer science student at IUT de Montreuil. Go backend, APIs, blockchain. Looking for an apprenticeship in 2027."
+    />
+    <meta property="og:title" content="latte" />
+    <meta
+      property="og:description"
+      content="Computer science student. Go backend, APIs, onchain infra. Apprenticeship 2027."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" as="image" href="assets/mael.jpg" />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="wrap">
+      <main id="main">
+        <header class="site-header">
+          <img
+            class="avatar"
+            src="assets/mael.jpg"
+            alt="Sitting outside with a matcha"
+            width="128"
+            height="128"
+          />
+          <div class="header-copy">
+            <h1 class="site-title">
+              latte
+              <img class="evm-mark" src="assets/ethereum.svg" alt="Ethereum" width="18" height="18" />
+            </h1>
+            <p class="greeting">traveler of <a href="dreams.html" data-say="I really love dreams. It's fascinating to experience something so strange.">dreams</a></p>
+          </div>
+          <nav class="header-links" aria-label="Contact">
+            <a href="https://github.com/lattewei" target="_blank" rel="noopener noreferrer" data-say="You'll find my open source projects.">github</a>
+            <a class="x-link" href="https://x.com/lattenull" target="_blank" rel="noopener noreferrer" aria-label="X" data-say="I try to post interesting stuff.">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="currentColor" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+            <a href="mailto:latte.pro@tutamail.com">mail</a>
+          </nav>
+        </header>
+
+        <div class="bio">
+          <p>I study computer science in Paris.</p>
+          <p>I'm also building things in my free time around web3, backend, API, and maybe AI in the future.</p>
+          <p>I just try to be better than yesterday.</p>
+          <p class="meta-line">
+            My life is made of:
+            <a class="link-accent" href="interests/sport.html" data-say="Sport helps me relax. Nothing beats the calm walk home from practice with friends.">Sport</a>
+            ·
+            <a class="link-accent" href="interests/music.html" data-say="I love listening to it as much as making it. It lets me express myself without words.">Music</a>
+            ·
+            <a class="link-accent" href="interests/web3.html" data-say="i guess i'm still early">web3</a>
+          </p>
+
+        </div>
+
+        <section class="section" aria-labelledby="school-heading">
+          <h2 id="school-heading" class="section-heading">School</h2>
+          <article class="entry">
+            <p class="work-headline">
+              <a class="link-fg" href="https://www.iut.univ-paris8.fr/Formations/BUT/INFO" target="_blank" rel="noopener noreferrer" data-say="Yes, that's where I learn.">IUT de Montreuil</a>
+            </p>
+            <div class="entry-body">
+              <p>BUT Informatique, first year. Classes, practical exercises, and independent learning through concrete projects.</p>
+              <div class="work-meta">
+                <span>Student</span>
+                <span class="date-label">2026 –</span>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="section" aria-labelledby="projects-heading">
+          <h2 id="projects-heading" class="section-heading">Projects</h2>
+          <article class="entry">
+            <p class="work-headline">Onchain data infrastructure</p>
+            <div class="entry-body">
+              <p>
+                Go API to collect, process, and expose market / trading data. Solana first. Next: host my own nodes, and serve the data as fast as possible.
+              </p>
+              <div class="work-meta">
+                <span>Go, Solana, PostgreSQL</span>
+                <span class="date-label">in progress</span>
+              </div>
+            </div>
+          </article>
+          <article class="entry">
+            <p class="work-headline">
+              <a class="link-fg" href="https://github.com/lattewei/llm-observatory" target="_blank" rel="noopener noreferrer" data-say="My first backend project. I'd like to improve it someday.">LLM Observatory</a>
+            </p>
+            <div class="entry-body">
+              <p>
+                Go API wired to Ollama. Prometheus metrics, Grafana dashboards, Loki logs, OpenTelemetry.
+              </p>
+              <div class="work-meta">
+                <span>Go, Gin, Docker</span>
+                <span class="date-label">2026</span>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="section" aria-labelledby="objectives-heading">
+          <h2 id="objectives-heading" class="section-heading">Objectives</h2>
+          <ul class="checklist">
+            <li>Deepen my knowledge of AI.</li>
+            <li>Take part in hackathons in blockchain or health.</li>
+            <li>Run a marathon in under 3h30.</li>
+            <li>Weighted pull-ups at 35 kg.</li>
+          </ul>
+        </section>
+
+        <section class="section" aria-labelledby="pensees-heading">
+          <h2 id="pensees-heading" class="section-heading">Thoughts</h2>
+          <div data-pensees-list>
+            <p class="entry-body">Nothing yet.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="pensees/posts.js"></script>
+    <script src="assets/pensees.js"></script>
+    <script src="assets/eye.js"></script>
+    <script src="assets/egg.js"></script>
+  </body>
+</html>
