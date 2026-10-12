@@ -13,6 +13,18 @@
       window.localStorage.setItem("latte.eye", value);
     } catch (error) {}
   }
+  function originGet() {
+    try {
+      return window.sessionStorage.getItem("latte.eyeOrigin");
+    } catch (error) {
+      return null;
+    }
+  }
+  function originSet(value) {
+    try {
+      window.sessionStorage.setItem("latte.eyeOrigin", value);
+    } catch (error) {}
+  }
   var enabled = storeGet() !== "off";
   var running = false;
 
@@ -203,8 +215,14 @@
     }
     if (!placed) {
       placed = true;
-      eyeX = vw - W - MARGIN;
-      eyeY = MARGIN;
+      if (originGet() === "bl") {
+        eyeX = MARGIN;
+        eyeY = vh - H - MARGIN;
+      } else {
+        eyeX = vw - W - MARGIN;
+        eyeY = MARGIN;
+      }
+      originSet(bottomLeft ? "bl" : "tr");
     }
     canvas.style.transform = "translate(" + Math.round(eyeX) + "px," + Math.round(eyeY) + "px)";
     trace.setAttribute("width", vw);
