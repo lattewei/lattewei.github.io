@@ -680,6 +680,10 @@ button {
   opacity: 0;
 }
 
+body.page-sport .eye-caption {
+  text-align: left;
+}
+
 @media (min-width: 1200px) and (hover: hover) {
   body.eye-on .eye,
   body.eye-on .eye-trace,

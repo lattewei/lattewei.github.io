@@ -189,13 +189,28 @@
   function place() {
     vw = window.innerWidth;
     vh = window.innerHeight;
-    eyeX = vw - W - MARGIN;
-    eyeY = MARGIN;
+    var bottomLeft = document.body.classList.contains("page-sport");
+    if (bottomLeft) {
+      eyeX = MARGIN;
+      eyeY = vh - H - MARGIN;
+    } else {
+      eyeX = vw - W - MARGIN;
+      eyeY = MARGIN;
+    }
     canvas.style.transform = "translate(" + Math.round(eyeX) + "px," + Math.round(eyeY) + "px)";
     trace.setAttribute("width", vw);
     trace.setAttribute("height", vh);
-    caption.style.top = Math.round(eyeY + H + 10) + "px";
-    caption.style.right = MARGIN + "px";
+    if (bottomLeft) {
+      caption.style.left = MARGIN + "px";
+      caption.style.right = "auto";
+      caption.style.top = "auto";
+      caption.style.bottom = Math.round(vh - eyeY + 10) + "px";
+    } else {
+      caption.style.left = "auto";
+      caption.style.right = MARGIN + "px";
+      caption.style.top = Math.round(eyeY + H + 10) + "px";
+      caption.style.bottom = "auto";
+    }
   }
 
   function draw(open) {
