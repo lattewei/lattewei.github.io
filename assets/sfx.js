@@ -15,32 +15,52 @@
   var clickSound = makeSound("onclick");
   var escapeSound = makeSound("echap");
 
+  var unlocked = false;
+  function unlock() {
+    if (unlocked) return;
+    unlocked = true;
+    [clickSound, escapeSound].forEach(function (audio) {
+      var volume = audio.volume;
+      audio.volume = 0;
+      function restore() {
+        try {
+          audio.pause();
+        } catch (error) {}
+        try {
+          audio.currentTime = 0;
+        } catch (error) {}
+        audio.volume = volume;
+      }
+      try {
+        var promise = audio.play();
+        if (promise && promise.then) {
+          promise.then(restore, function () {
+            audio.volume = volume;
+          });
+        } else {
+          restore();
+        }
+      } catch (error) {
+        audio.volume = volume;
+      }
+    });
+  }
+
   function play(audio) {
     try {
       audio.currentTime = 0;
+    } catch (error) {}
+    try {
       var promise = audio.play();
       if (promise && promise.catch) promise.catch(function () {});
     } catch (error) {}
   }
 
+  var NAV_DELAY = 150;
+
   function playThen(audio, done) {
-    var finished = false;
-    function finish() {
-      if (finished) return;
-      finished = true;
-      audio.removeEventListener("ended", finish);
-      done();
-    }
-    audio.addEventListener("ended", finish);
-    try {
-      audio.currentTime = 0;
-      var promise = audio.play();
-      if (promise && promise.catch) promise.catch(finish);
-    } catch (error) {
-      finish();
-      return;
-    }
-    setTimeout(finish, 1000);
+    play(audio);
+    setTimeout(done, NAV_DELAY);
   }
 
   var overlay = null;
@@ -86,16 +106,21 @@
   function isInternalLink(link) {
     if (link.hasAttribute("download")) return false;
     if ((link.getAttribute("target") || "").toLowerCase() === "_blank") return false;
-    var href = link.getAttribute("href") || "";
+    var href = (link.getAttribute("href") || "").trim();
+    if (!href) return false;
     if (href.charAt(0) === "#") return true;
-    var url;
-    try {
-      url = new URL(link.href, window.location.href);
-    } catch (error) {
-      return false;
+    if (href.slice(0, 2) === "//") return false;
+    if (/^[a-z][a-z0-9+.-]*:/i.test(href)) {
+      var url;
+      try {
+        url = new URL(href, window.location.href);
+      } catch (error) {
+        return false;
+      }
+      if (url.protocol !== "http:" && url.protocol !== "https:") return false;
+      return url.origin === window.location.origin;
     }
-    if (url.protocol !== "http:" && url.protocol !== "https:") return false;
-    return url.origin === window.location.origin;
+    return true;
   }
 
   function zoomableImage(img) {
@@ -130,7 +155,8 @@
         }
         event.preventDefault();
         var destination = link.href;
-        playThen(clickSound, function () {
+        var sound = link.classList.contains("back") ? escapeSound : clickSound;
+        playThen(sound, function () {
           window.location.href = destination;
         });
         return;
@@ -146,10 +172,34 @@
     true
   );
 
-  document.addEventListener("keydown", function (event) {
-    if (event.key !== "Escape") return;
-    if (!isOpen()) return;
-    event.preventDefault();
-    closeOverlay();
-  });
+  document.addEventListener(
+    "keydown",
+    function (event) {
+      if (event.key !== "Escape") return;
+      if (!isOpen()) return;
+      event.preventDefault();
+      closeOverlay();
+    }
+  );
+
+  var prefetched = {};
+  function maybePrefetch(event) {
+    if (window.location.protocol !== "http:" && window.location.protocol !== "https:") return;
+    var target = event.target;
+    if (!target || !target.closest) return;
+    var link = target.closest("a[href]");
+    if (!link || !isInternalLink(link)) return;
+    var href = link.getAttribute("href") || "";
+    if (!href || href.charAt(0) === "#") return;
+    if (prefetched[link.href]) return;
+    prefetched[link.href] = true;
+    var el = document.createElement("link");
+    el.rel = "prefetch";
+    el.href = link.href;
+    document.head.appendChild(el);
+  }
+
+  document.addEventListener("pointerdown", unlock, true);
+  document.addEventListener("pointerover", maybePrefetch, true);
+  document.addEventListener("focusin", maybePrefetch, true);
 })();
