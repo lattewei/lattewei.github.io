@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="../assets/style.css" />
     <link rel="preload" href="../assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="../assets/fonts/geist-600.woff2" as="font" type="font/woff2" crossorigin />
+    <script>
+      (function () {
+        try {
+          if (localStorage.getItem("latte.theme") === "light") {
+            document.documentElement.setAttribute("data-theme", "light");
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -45,7 +54,7 @@
       </main>
     </div>
     <script src="../assets/interest-media.js"></script>
-    <script src="../assets/eye.js"></script>
-    <script src="../assets/sfx.js"></script>
+    <script src="../assets/lightbox.js"></script>
+    <script src="../assets/theme.js"></script>
   </body>
 </html>

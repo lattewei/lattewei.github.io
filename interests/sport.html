@@ -7,27 +7,32 @@
     <link rel="stylesheet" href="../assets/style.css" />
     <link rel="preload" href="../assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="../assets/fonts/geist-600.woff2" as="font" type="font/woff2" crossorigin />
+    <script>
+      (function () {
+        try {
+          if (localStorage.getItem("latte.theme") === "light") {
+            document.documentElement.setAttribute("data-theme", "light");
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
-  <body class="page-sport">
+  <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="wrap">
       <main id="main">
-        <div class="sport-copy">
-          <a class="back" href="../index.html"><span class="back-arrow" aria-hidden="true">←</span> <em>latte</em></a>
-          <h1 class="page-title">Sport</h1>
-          <div class="page-body">
-            <p>I do a lot of sport.</p>
-            <p>I loved boxing when I was younger, but I stopped because the diet was too strict, and I wanted to try other sports.</p>
-            <p>Right now I train several: weightlifting (my current favorite), long runs, 100m sprint, climbing, and swimming.</p>
-            <p>I would like to add cycling and hiking later.</p>
-            <p>I prefer doing several sports. It lets me practice what I want when I want, discover different worlds, different ways of feeling effort, and it makes my body feel functional, not only aesthetic.</p>
-          </div>
+        <a class="back" href="../index.html"><span class="back-arrow" aria-hidden="true">←</span> <em>latte</em></a>
+        <h1 class="page-title">Sport</h1>
+        <div class="page-body">
+          <p>I do a lot of sport.</p>
+          <p>I loved boxing when I was younger, but I stopped because the diet was too strict, and I wanted to try other sports.</p>
+          <p>Right now I train several: weightlifting (my current favorite), long runs, 100m sprint, climbing, and swimming.</p>
+          <p>I would like to add cycling and hiking later.</p>
+          <p>I prefer doing several sports. It lets me practice what I want when I want, discover different worlds, different ways of feeling effort, and it makes my body feel functional, not only aesthetic.</p>
         </div>
-        <div class="page-media" data-interest-media="sport"></div>
       </main>
     </div>
-    <script src="../assets/interest-media.js"></script>
-    <script src="../assets/eye.js"></script>
-    <script src="../assets/sfx.js"></script>
+    <script src="../assets/lightbox.js"></script>
+    <script src="../assets/theme.js"></script>
   </body>
 </html>

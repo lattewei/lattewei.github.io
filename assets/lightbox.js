@@ -1,68 +1,4 @@
 (function () {
-  var script = document.currentScript;
-  var base = "assets/";
-  if (script && script.src) {
-    base = script.src.replace(/[?#].*$/, "").replace(/[^/]*$/, "");
-  }
-
-  function makeSound(name) {
-    var audio = new Audio(base + name + ".wav");
-    audio.preload = "auto";
-    audio.volume = 0.7;
-    return audio;
-  }
-
-  var clickSound = makeSound("onclick");
-  var escapeSound = makeSound("echap");
-
-  var unlocked = false;
-  function unlock() {
-    if (unlocked) return;
-    unlocked = true;
-    [clickSound, escapeSound].forEach(function (audio) {
-      var volume = audio.volume;
-      audio.volume = 0;
-      function restore() {
-        try {
-          audio.pause();
-        } catch (error) {}
-        try {
-          audio.currentTime = 0;
-        } catch (error) {}
-        audio.volume = volume;
-      }
-      try {
-        var promise = audio.play();
-        if (promise && promise.then) {
-          promise.then(restore, function () {
-            audio.volume = volume;
-          });
-        } else {
-          restore();
-        }
-      } catch (error) {
-        audio.volume = volume;
-      }
-    });
-  }
-
-  function play(audio) {
-    try {
-      audio.currentTime = 0;
-    } catch (error) {}
-    try {
-      var promise = audio.play();
-      if (promise && promise.catch) promise.catch(function () {});
-    } catch (error) {}
-  }
-
-  var NAV_DELAY = 150;
-
-  function playThen(audio, done) {
-    play(audio);
-    setTimeout(done, NAV_DELAY);
-  }
-
   var overlay = null;
   var overlayImg = null;
   var lastFocus = null;
@@ -99,7 +35,6 @@
     if (!isOpen()) return;
     overlay.classList.remove("is-open");
     document.body.classList.remove("lightbox-open");
-    play(escapeSound);
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
 
@@ -145,42 +80,21 @@
       var target = event.target;
       if (!target || !target.closest) return;
 
-      var link = target.closest("a[href]");
-      if (link) {
-        if (!isInternalLink(link)) return;
-        var href = link.getAttribute("href") || "";
-        if (href.charAt(0) === "#") {
-          play(clickSound);
-          return;
-        }
-        event.preventDefault();
-        var destination = link.href;
-        var sound = link.classList.contains("back") ? escapeSound : clickSound;
-        playThen(sound, function () {
-          window.location.href = destination;
-        });
-        return;
-      }
-
       var img = zoomableImage(target.closest("img"));
       if (img) {
         event.preventDefault();
-        play(clickSound);
         openOverlay(img);
       }
     },
     true
   );
 
-  document.addEventListener(
-    "keydown",
-    function (event) {
-      if (event.key !== "Escape") return;
-      if (!isOpen()) return;
-      event.preventDefault();
-      closeOverlay();
-    }
-  );
+  document.addEventListener("keydown", function (event) {
+    if (event.key !== "Escape") return;
+    if (!isOpen()) return;
+    event.preventDefault();
+    closeOverlay();
+  });
 
   var prefetched = {};
   function maybePrefetch(event) {
@@ -199,7 +113,6 @@
     document.head.appendChild(el);
   }
 
-  document.addEventListener("pointerdown", unlock, true);
   document.addEventListener("pointerover", maybePrefetch, true);
   document.addEventListener("focusin", maybePrefetch, true);
 })();
