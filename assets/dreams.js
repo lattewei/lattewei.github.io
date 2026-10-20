@@ -40,7 +40,7 @@
   }
 
   var back =
-    '<a class="back" href="index.html"><span class="back-arrow" aria-hidden="true">←</span> <em>latte</em></a>';
+    '<a class="back" href="index.html" aria-label="Back to home"><span class="back-arrow" aria-hidden="true">←</span></a>';
 
   function renderList(root) {
     var posts = sortedPosts();
@@ -88,7 +88,7 @@
       })
       .join("");
     root.innerHTML =
-      '<a class="back" href="dreams.html"><span class="back-arrow" aria-hidden="true">←</span> <em>latte</em></a>' +
+      '<a class="back" href="dreams.html" aria-label="Back to dreams"><span class="back-arrow" aria-hidden="true">←</span></a>' +
       '<h1 class="page-title">' +
       escapeHtml(post.title) +
       "</h1>" +

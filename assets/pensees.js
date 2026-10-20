@@ -72,7 +72,7 @@
     if (!post) {
       document.title = "Not found · latte";
       root.innerHTML =
-        '<a class="back" href="index.html"><span class="back-arrow" aria-hidden="true">←</span> <em>latte</em></a>' +
+        '<a class="back" href="index.html" aria-label="Back to home"><span class="back-arrow" aria-hidden="true">←</span></a>' +
         '<h1 class="page-title">This thought is not here</h1>' +
         '<p class="page-body">The link is dead, or the slug changed.</p>';
       return;
@@ -84,7 +84,7 @@
       })
       .join("");
     root.innerHTML =
-      '<a class="back" href="index.html"><span class="back-arrow" aria-hidden="true">←</span> <em>latte</em></a>' +
+      '<a class="back" href="index.html" aria-label="Back to home"><span class="back-arrow" aria-hidden="true">←</span></a>' +
       '<h1 class="page-title">' +
       escapeHtml(post.title) +
       "</h1>" +
