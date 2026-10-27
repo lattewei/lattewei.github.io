@@ -647,32 +647,33 @@ button {
   }
 }
 
+/* Reveal runs once per browser session (html.reveal set by assets/reveal.js). */
 @media (prefers-reduced-motion: no-preference) {
-  .wrap main > *:not(.page-media) {
+  html.reveal .wrap main > *:not(.page-media) {
     animation: reveal-in 0.5s var(--motion-ease-out) both;
   }
 
-  .wrap main > *:nth-child(1) {
+  html.reveal .wrap main > *:nth-child(1) {
     animation-delay: 0.05s;
   }
 
-  .wrap main > *:nth-child(2) {
+  html.reveal .wrap main > *:nth-child(2) {
     animation-delay: 0.11s;
   }
 
-  .wrap main > *:nth-child(3) {
+  html.reveal .wrap main > *:nth-child(3) {
     animation-delay: 0.17s;
   }
 
-  .wrap main > *:nth-child(4) {
+  html.reveal .wrap main > *:nth-child(4) {
     animation-delay: 0.23s;
   }
 
-  .wrap main > *:nth-child(5) {
+  html.reveal .wrap main > *:nth-child(5) {
     animation-delay: 0.29s;
   }
 
-  .wrap main > *:nth-child(n + 6) {
+  html.reveal .wrap main > *:nth-child(n + 6) {
     animation-delay: 0.35s;
   }
 }
