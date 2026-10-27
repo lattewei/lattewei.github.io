@@ -612,7 +612,7 @@ button {
 
 .perfume-meta,
 .perfume-detail-meta {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-sm);
   color: var(--color-muted);
