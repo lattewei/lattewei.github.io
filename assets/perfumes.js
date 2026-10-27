@@ -70,7 +70,7 @@
     var meta = metaLine(item);
     root.innerHTML =
       backDetail +
-      '<h1 class="page-title">' +
+      '<h1 class="page-title perfume-name">' +
       escapeHtml(item.name) +
       "</h1>" +
       (meta
