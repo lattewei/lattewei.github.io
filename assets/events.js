@@ -11,40 +11,17 @@
     return (window.EVENTS || []).slice();
   }
 
-  function thumb(item) {
-    var label = escapeHtml(item.title || "Event");
-    if (item.description) label += " — " + escapeHtml(item.description);
-    var inner = item.image
-      ? '<img src="' +
-        escapeHtml(item.image) +
-        '" alt="" loading="lazy" decoding="async" width="52" height="52" />'
-      : '<span class="event-thumb-fallback" aria-hidden="true"></span>';
-    if (item.href) {
-      return (
-        '<a class="event-thumb" href="' +
-        escapeHtml(item.href) +
-        '" target="_blank" rel="noopener noreferrer" aria-label="' +
-        label +
-        '">' +
-        inner +
-        "</a>"
-      );
+  function cover(item) {
+    if (!item.image) {
+      return '<div class="event-cover event-cover-empty" aria-hidden="true"></div>';
     }
-    return '<span class="event-thumb" aria-hidden="true">' + inner + "</span>";
-  }
-
-  function title(item) {
-    var text = escapeHtml(item.title);
-    if (item.href) {
-      return (
-        '<a class="event-title" href="' +
-        escapeHtml(item.href) +
-        '" target="_blank" rel="noopener noreferrer">' +
-        text +
-        "</a>"
-      );
-    }
-    return '<p class="event-title">' + text + "</p>";
+    return (
+      '<div class="event-cover">' +
+      '<img src="' +
+      escapeHtml(item.image) +
+      '" alt="" loading="lazy" decoding="async" width="320" height="180" />' +
+      "</div>"
+    );
   }
 
   function timeEl(item) {
@@ -61,6 +38,21 @@
     return '<span class="event-date">' + label + "</span>";
   }
 
+  function cardInner(item) {
+    return (
+      cover(item) +
+      '<div class="event-card-body">' +
+      timeEl(item) +
+      '<p class="event-title">' +
+      escapeHtml(item.title) +
+      "</p>" +
+      (item.description
+        ? '<p class="event-desc">' + escapeHtml(item.description) + "</p>"
+        : "") +
+      "</div>"
+    );
+  }
+
   function render(root) {
     var items = allEvents();
     if (!items.length) {
@@ -68,26 +60,22 @@
       return;
     }
     root.innerHTML =
-      '<ul class="events-list">' +
+      '<div class="events-grid">' +
       items
         .map(function (item) {
-          return (
-            '<li class="event-item">' +
-            thumb(item) +
-            '<div class="event-body">' +
-            '<div class="event-head">' +
-            title(item) +
-            timeEl(item) +
-            "</div>" +
-            (item.description
-              ? '<p class="event-desc">' + escapeHtml(item.description) + "</p>"
-              : "") +
-            "</div>" +
-            "</li>"
-          );
+          if (item.href) {
+            return (
+              '<a class="event-card" href="' +
+              escapeHtml(item.href) +
+              '" target="_blank" rel="noopener noreferrer">' +
+              cardInner(item) +
+              "</a>"
+            );
+          }
+          return '<article class="event-card">' + cardInner(item) + "</article>";
         })
         .join("") +
-      "</ul>";
+      "</div>";
   }
 
   var root = document.querySelector("[data-events]");
