@@ -11,4 +11,13 @@ window.EVENTS = [
     image:
       "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=82,width=128,height=128/uploads/ae/cd21a4e1-7bed-4b01-93c0-3513ed324e25.png",
   },
+  {
+    title: "BNB Builder Sessions, Paris",
+    date: "2026-11-10",
+    dateLabel: "Nov 10, 2026",
+    description: "Soon.",
+    href: "https://luma.com/0wcr8wu7",
+    image:
+      "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=82,width=128,height=128/uploads/ab/55d0e300-c7bc-4be2-b919-f9d1657e6f21.jpg",
+  },
 ];
