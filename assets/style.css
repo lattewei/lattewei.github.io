@@ -399,6 +399,7 @@ a.event-thumb:focus-visible {
   display: block;
   font-family: var(--font-sans);
   font-size: var(--font-size-xs);
+  font-weight: 600;
   line-height: 1.3;
   color: var(--color-muted);
 }
