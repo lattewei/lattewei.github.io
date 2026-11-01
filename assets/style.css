@@ -14,34 +14,10 @@
   src: url("fonts/inter-600.woff2") format("woff2");
 }
 
-@font-face {
-  font-family: Geist Sans;
-  font-style: normal;
-  font-display: swap;
-  font-weight: 500;
-  src: url("fonts/geist-500.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: Geist Sans;
-  font-style: normal;
-  font-display: swap;
-  font-weight: 600;
-  src: url("fonts/geist-600.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: JetBrains Mono;
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url("fonts/jetbrains-400.woff2") format("woff2");
-}
-
 :root {
   --font-sans: Inter, system-ui, sans-serif;
-  --font-display: "Geist Sans", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: Inter, system-ui, sans-serif;
+  --font-mono: Inter, system-ui, sans-serif;
   /* Theme: edit these tokens to restyle the site (light by default). */
   --color-bg: #f7f6f2;
   --color-fg: #141413;
