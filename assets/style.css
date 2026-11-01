@@ -18,16 +18,16 @@
   --font-sans: Inter, system-ui, sans-serif;
   --font-display: Inter, system-ui, sans-serif;
   --font-mono: Inter, system-ui, sans-serif;
-  /* Theme: edit these tokens to restyle the site (light by default). */
-  --color-bg: #f7f6f2;
-  --color-fg: #141413;
-  --color-fg-soft: #3a3935;
-  --color-muted: #6b6a65;
-  --color-muted-soft: #8e8d88;
-  --color-accent: #2a7fd4;
-  --color-border: #dddcd5;
-  --color-focus-surface: color-mix(in srgb, var(--color-accent) 10%, var(--color-bg));
-  --color-lightbox: rgba(247, 246, 242, 0.94);
+  /* Theme: dark. */
+  --color-bg: #0c0c0b;
+  --color-fg: #f0efea;
+  --color-fg-soft: #c4c3bc;
+  --color-muted: #8a8984;
+  --color-muted-soft: #6b6a65;
+  --color-accent: #5aa4e8;
+  --color-border: #2a2926;
+  --color-focus-surface: color-mix(in srgb, var(--color-accent) 14%, var(--color-bg));
+  --color-lightbox: rgba(12, 12, 11, 0.94);
   --motion-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --motion-hover: 0.28s var(--motion-ease-out);
   --motion-focus: 0.22s var(--motion-ease-out);
@@ -50,7 +50,7 @@
 }
 
 html {
-  color-scheme: light;
+  color-scheme: dark;
   background: var(--color-bg);
 }
 
