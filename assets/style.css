@@ -19,7 +19,7 @@
   --font-display: Inter, system-ui, sans-serif;
   --font-mono: Inter, system-ui, sans-serif;
   /* Theme: dark. */
-  --color-bg: #0c0c0b;
+  --color-bg: #000000;
   --color-fg: #f0efea;
   --color-fg-soft: #c4c3bc;
   --color-muted: #8a8984;
@@ -27,7 +27,7 @@
   --color-accent: #5aa4e8;
   --color-border: #2a2926;
   --color-focus-surface: color-mix(in srgb, var(--color-accent) 14%, var(--color-bg));
-  --color-lightbox: rgba(12, 12, 11, 0.94);
+  --color-lightbox: rgba(0, 0, 0, 0.94);
   --motion-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --motion-hover: 0.28s var(--motion-ease-out);
   --motion-focus: 0.22s var(--motion-ease-out);
@@ -342,9 +342,10 @@ button {
   flex-shrink: 0;
   overflow: hidden;
   border-radius: 0.4rem;
-  border: 1px solid var(--color-border);
+  border: 0;
   background: color-mix(in srgb, var(--color-fg) 6%, var(--color-bg));
   box-shadow: 0 0 0 3px var(--color-bg);
+  transition: transform var(--motion-hover);
 }
 
 .event-thumb img {
@@ -352,6 +353,17 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform var(--motion-hover);
+}
+
+a.event-thumb:hover,
+a.event-thumb:focus-visible {
+  transform: scale(1.08);
+}
+
+a.event-thumb:hover img,
+a.event-thumb:focus-visible img {
+  transform: scale(1.04);
 }
 
 .event-thumb-fallback {
@@ -359,11 +371,6 @@ button {
   width: 100%;
   height: 100%;
   background: color-mix(in srgb, var(--color-muted) 18%, var(--color-bg));
-}
-
-a.event-thumb:hover,
-a.event-thumb:focus-visible {
-  border-color: var(--color-muted);
 }
 
 a.event-thumb:focus-visible {
