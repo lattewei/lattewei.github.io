@@ -179,14 +179,14 @@ button {
   justify-content: flex-end;
   gap: 0.95rem;
   font-family: var(--font-sans);
-  font-size: 0.8125rem;
+  font-size: 0.9rem;
   line-height: 1.25;
 }
 
 @media (min-width: 48rem) {
   .header-links {
     gap: 1.15rem;
-    font-size: 0.875rem;
+    font-size: 0.95rem;
   }
 }
 
@@ -210,13 +210,30 @@ button {
   outline-offset: 2px;
 }
 
+.header-links .x-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-fg-soft);
+}
+
+.header-links .x-link:hover,
+.header-links .x-link:focus-visible {
+  color: var(--color-fg);
+}
+
+.header-links .x-link svg {
+  width: 0.88em;
+  height: 0.88em;
+  display: block;
+}
+
 .site-title {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
   margin: 0;
   font-family: var(--font-sans);
-  font-size: 0.9375rem;
+  font-size: 1.05rem;
   font-weight: 600;
   line-height: 1.25;
   letter-spacing: -0.01em;
@@ -225,7 +242,7 @@ button {
 
 @media (min-width: 48rem) {
   .site-title {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 }
 
