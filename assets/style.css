@@ -18,16 +18,16 @@
   --font-sans: Inter, system-ui, sans-serif;
   --font-display: Inter, system-ui, sans-serif;
   --font-mono: Inter, system-ui, sans-serif;
-  /* Theme: light. */
-  --color-bg: #ffffff;
-  --color-fg: #09090b;
-  --color-fg-soft: #18181b;
-  --color-muted: #3f3f46;
-  --color-muted-soft: #52525b;
-  --color-accent: #1d6bb8;
-  --color-border: #d4d4d8;
-  --color-focus-surface: color-mix(in srgb, var(--color-accent) 10%, var(--color-bg));
-  --color-lightbox: rgba(255, 255, 255, 0.94);
+  /* Theme: dark (jup-ish ambient). */
+  --color-bg: #05070a;
+  --color-fg: #f4f4f5;
+  --color-fg-soft: #e4e4e7;
+  --color-muted: #a1a1aa;
+  --color-muted-soft: #71717a;
+  --color-accent: #5aa4e8;
+  --color-border: #1c2229;
+  --color-focus-surface: color-mix(in srgb, var(--color-accent) 14%, var(--color-bg));
+  --color-lightbox: rgba(5, 7, 10, 0.94);
   --motion-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --motion-hover: 0.28s var(--motion-ease-out);
   --motion-focus: 0.22s var(--motion-ease-out);
@@ -50,9 +50,10 @@
 }
 
 html {
-  color-scheme: light;
+  color-scheme: dark;
   background: var(--color-bg);
   font-size: 110%;
+  -webkit-text-size-adjust: 100%;
 }
 
 *,
@@ -61,10 +62,6 @@ html {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-html {
-  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -152,16 +149,8 @@ button {
 
 /* Top bar: name left, links right — Zinedine-style rhythm. */
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  margin: 0 -0.25rem 4rem;
-  padding: 0.85rem 0.25rem 1rem;
-  background: linear-gradient(
-    to bottom,
-    var(--color-bg) 55%,
-    color-mix(in srgb, var(--color-bg) 0%, transparent)
-  );
+  margin: 0 0 5.5rem;
+  padding: 0.85rem 0 0.25rem;
 }
 
 .header-top {
