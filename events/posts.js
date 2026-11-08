@@ -29,4 +29,13 @@ window.EVENTS = [
     image:
       "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=82,width=128,height=128/uploads/p7/71400ef4-aa8a-433e-9532-f841880534bd.png",
   },
+  {
+    title: "Alan x Qovery x AWS: AI Health Hack 2",
+    date: "2026-11-28",
+    dateLabel: "Nov 28, 2026",
+    description: "On the waitlist.",
+    href: "https://luma.com/o1eopuwy",
+    image:
+      "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=82,width=128,height=128/uploads/yd/255aa2ad-3691-4826-8f29-dace4163d8cb.png",
+  },
 ];
