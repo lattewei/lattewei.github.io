@@ -159,6 +159,18 @@ button {
   justify-content: space-between;
   gap: 1.25rem;
   min-height: 1.5rem;
+  /* Bleed a bit past the content column. */
+  margin-left: -0.85rem;
+  margin-right: -0.85rem;
+  width: calc(100% + 1.7rem);
+}
+
+@media (min-width: 48rem) {
+  .header-top {
+    margin-left: -1.75rem;
+    margin-right: -1.75rem;
+    width: calc(100% + 3.5rem);
+  }
 }
 
 .header-links {
