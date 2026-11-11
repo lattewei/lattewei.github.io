@@ -15,7 +15,11 @@ window.EVENTS = [
     title: "BNB Builder Sessions",
     date: "2026-11-10",
     dateLabel: "Nov 10, 2026",
-    description: "Already got an idea of what i'll ship",
+    description: "submitted ",
+    descriptionLink: {
+      text: "yield!",
+      href: "https://github.com/lattewei/bnb-workshop",
+    },
     href: "https://luma.com/0wcr8wu7",
     image:
       "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=82,width=128,height=128/uploads/ab/55d0e300-c7bc-4be2-b919-f9d1657e6f21.jpg",

@@ -11,9 +11,31 @@
     return (window.EVENTS || []).slice();
   }
 
+  function plainDescription(item) {
+    var text = item.description || "";
+    if (item.descriptionLink && item.descriptionLink.text) {
+      text += item.descriptionLink.text;
+    }
+    return text;
+  }
+
+  function formatDescription(item) {
+    var html = item.description ? escapeHtml(item.description) : "";
+    if (item.descriptionLink && item.descriptionLink.text && item.descriptionLink.href) {
+      html +=
+        '<a class="link-accent" href="' +
+        escapeHtml(item.descriptionLink.href) +
+        '" target="_blank" rel="noopener noreferrer">' +
+        escapeHtml(item.descriptionLink.text) +
+        "</a>";
+    }
+    return html;
+  }
+
   function thumb(item) {
     var label = escapeHtml(item.title || "Event");
-    if (item.description) label += " — " + escapeHtml(item.description);
+    var desc = plainDescription(item);
+    if (desc) label += " — " + escapeHtml(desc);
     var inner = item.image
       ? '<img src="' +
         escapeHtml(item.image) +
@@ -37,14 +59,13 @@
   }
 
   function copy(item) {
+    var desc = formatDescription(item);
     return (
       '<div class="event-copy">' +
       '<p class="event-title">' +
       escapeHtml(item.title) +
       "</p>" +
-      (item.description
-        ? '<p class="event-desc">' + escapeHtml(item.description) + "</p>"
-        : "") +
+      (desc ? '<p class="event-desc">' + desc + "</p>" : "") +
       "</div>"
     );
   }
