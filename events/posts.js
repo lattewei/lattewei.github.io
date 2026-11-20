@@ -25,13 +25,13 @@ window.EVENTS = [
       "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=82,width=128,height=128/uploads/ab/55d0e300-c7bc-4be2-b919-f9d1657e6f21.jpg",
   },
   {
-    title: "Team1 France Uni Tour",
-    date: "2026-11-18",
-    dateLabel: "Nov 18, 2026",
-    description: "Soon.",
-    href: "https://luma.com/fsw28mw9",
+    title: "OKX in Paris",
+    date: "2026-11-26",
+    dateLabel: "Nov 26, 2026",
+    description: "Glad I got invited!",
+    href: "https://luma.com/l27el96p",
     image:
-      "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=82,width=128,height=128/uploads/p7/71400ef4-aa8a-433e-9532-f841880534bd.png",
+      "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=82,width=128,height=128/uploads/8v/69fa3285-ea84-40b9-a8bb-e39e85501c97.png",
   },
   {
     title: "Alan x Qovery x AWS: AI Health Hack 2",
