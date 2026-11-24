@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>hi · latte</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content="Say hi to latte" />
+    <link rel="icon" href="../assets/ethereum.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../assets/style.css" />
+    <link rel="preload" href="../assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="../assets/fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin />
+  </head>
+  <body class="card-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="card-shell">
+      <main id="main" class="card-panel">
+        <p class="card-hi">hi <span class="card-wave" aria-hidden="true">👋</span></p>
+
+        <div class="card-spacer" aria-hidden="true"></div>
+
+        <nav class="card-nav" aria-label="Contact">
+          <a
+            class="card-item"
+            href="https://www.linkedin.com/in/REPLACE_ME"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-suffix="[↗]"
+          >
+            <span class="card-item-label">LinkedIn</span>
+          </a>
+
+          <a
+            class="card-item"
+            href="https://x.com/lattenull"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-suffix="[↗]"
+          >
+            <span class="card-item-label">X</span>
+            <span class="card-item-side">@lattenull</span>
+          </a>
+
+          <button
+            type="button"
+            class="card-item card-item-copy"
+            id="card-mail"
+            data-email="latte.pro@tutamail.com"
+            data-suffix="[+]"
+            aria-label="Copy email address"
+          >
+            <span class="card-item-label">Mail</span>
+            <span class="card-item-side" data-mail-state>copy</span>
+          </button>
+        </nav>
+      </main>
+    </div>
+    <script>
+      (function () {
+        var btn = document.getElementById("card-mail");
+        if (!btn) return;
+        var side = btn.querySelector("[data-mail-state]");
+        var email = btn.getAttribute("data-email") || "";
+        var timer = 0;
+
+        function setState(text) {
+          if (side) side.textContent = text;
+        }
+
+        btn.addEventListener("click", function () {
+          function done() {
+            setState("copied");
+            btn.setAttribute("data-suffix", "[copied]");
+            window.clearTimeout(timer);
+            timer = window.setTimeout(function () {
+              setState("copy");
+              btn.setAttribute("data-suffix", "[+]");
+            }, 1600);
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(email).then(done).catch(function () {
+              window.location.href = "mailto:" + email;
+            });
+          } else {
+            window.location.href = "mailto:" + email;
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
